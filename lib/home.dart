@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage> {
           'Url Shortner',
           style: TextStyle(
             color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
@@ -51,7 +52,12 @@ class _HomePageState extends State<HomePage> {
             TextFormField(
               controller: urlController,
               decoration: InputDecoration(
-                label: const Text('url'),
+                label: const Text(
+                  'url',
+                  style: TextStyle(
+                    color: Colors.teal,
+                  ),
+                ),
                 hintText: 'enter url',
                 enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(color: Colors.teal),
@@ -64,7 +70,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 20,
             ),
-            Text('shortner link : $shortLink'),
+            Text('short link :  $shortLink'),
             const SizedBox(
               height: 20,
             ),
@@ -75,13 +81,23 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     getData();
                   },
-                  child: const Text('Click to short'),
+                  child: const Text(
+                    'Click to short',
+                    style: TextStyle(
+                      color: Colors.teal,
+                    ),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     FlutterClipboard.copy(shortLink);
                   },
-                  child: const Text('copy to clipboard'),
+                  child: const Text(
+                    'Copy to clipboard',
+                    style: TextStyle(
+                      color: Colors.teal,
+                    ),
+                  ),
                 ),
               ],
             )
