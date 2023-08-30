@@ -1,3 +1,4 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -10,10 +11,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   TextEditingController urlController = TextEditingController();
 
-    //method to call api
+  //method to call api
 
   var shortLink = '';
 
@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
     });
 
     return 'Success';
-    
   }
 
   @override
@@ -44,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body:  Padding(
+      body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -62,6 +61,30 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(10)),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text('shortner link : $shortLink'),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    getData();
+                  },
+                  child: const Text('Click to short'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    FlutterClipboard.copy(shortLink);
+                  },
+                  child: const Text('copy to clipboard'),
+                ),
+              ],
+            )
           ],
         ),
       ),
