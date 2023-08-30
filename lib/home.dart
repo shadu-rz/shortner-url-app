@@ -80,6 +80,8 @@ class _HomePageState extends State<HomePage> {
                 ElevatedButton(
                   onPressed: () {
                     getData();
+
+                   
                   },
                   child: const Text(
                     'Click to short',
@@ -91,6 +93,15 @@ class _HomePageState extends State<HomePage> {
                 ElevatedButton(
                   onPressed: () {
                     FlutterClipboard.copy(shortLink);
+                      const  snackBar = SnackBar(
+                      content:  Text(
+                        'Link copied',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    );
+                    ScaffoldMessenger.of(context)
+                      ..removeCurrentSnackBar()
+                      ..showSnackBar(snackBar);
                   },
                   child: const Text(
                     'Copy to clipboard',
