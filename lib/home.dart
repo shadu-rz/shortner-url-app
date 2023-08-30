@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +12,24 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   
   TextEditingController urlController = TextEditingController();
+
+    //method to call api
+
+  var shortLink = '';
+
+  Future<String> getData() async {
+    var url = urlController.text;
+    var response =
+        await http.get(Uri.parse('https://api.shrtco.de/v2/shorten?url=$url'));
+    var jsonData = jsonDecode(response.body);
+
+    setState(() {
+      shortLink = jsonData['result']['short_link'];
+    });
+
+    return 'Success';
+    
+  }
 
   @override
   Widget build(BuildContext context) {
