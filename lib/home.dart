@@ -8,6 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
   TextEditingController urlController = TextEditingController();
 
   @override
@@ -23,11 +24,25 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(20.0),
+      body:  Padding(
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
+          children: [
+            TextFormField(
+              controller: urlController,
+              decoration: InputDecoration(
+                label: const Text('url'),
+                hintText: 'enter url',
+                enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.teal),
+                    borderRadius: BorderRadius.circular(10)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.teal),
+                    borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
+          ],
         ),
       ),
     );
